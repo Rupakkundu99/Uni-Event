@@ -18,9 +18,9 @@ import ScreenWrapper from './src/components/ScreenWrapper';
 import { AuthProvider, useAuth } from './src/lib/AuthContext';
 import { ThemeProvider, useTheme } from './src/lib/ThemeContext';
 import { db } from './src/lib/firebaseConfig';
+import { BASE_URL } from './src/lib/config';
 import { registerForPushNotificationsAsync } from './src/lib/notificationService';
 import AdminDashboard from './src/screens/AdminDashboard';
-const AppearanceScreen = lazy(() => import('./src/screens/AppearanceScreen'));
 import AttendanceDashboard from './src/screens/AttendanceDashboard';
 import AuthScreen from './src/screens/AuthScreen';
 import ClubProfileScreen from './src/screens/ClubProfileScreen';
@@ -31,7 +31,6 @@ import EventDetail from './src/screens/EventDetail';
 import EventRegistrationFormScreen from './src/screens/EventRegistrationFormScreen';
 import FormBuilderScreen from './src/screens/FormBuilderScreen';
 import LeaderboardScreen from './src/screens/LeaderboardScreen';
-const LocationHeatmapScreen = lazy(() => import('./src/screens/LocationHeatmapScreen'));
 import MyEventsScreen from './src/screens/MyEventsScreen';
 import MyRegisteredEventsScreen from './src/screens/MyRegisteredEventsScreen';
 import ParticipatingEventsScreen from './src/screens/ParticipatingEventsScreen';
@@ -39,12 +38,15 @@ import PaymentScreen from './src/screens/PaymentScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import QRScannerScreen from './src/screens/QRScannerScreen';
 import RemindersScreen from './src/screens/RemindersScreen';
-const ReportBugScreen = lazy(() => import('./src/screens/ReportBugScreen'));
 import SavedEventsScreen from './src/screens/SavedEventsScreen';
 import TicketScreen from './src/screens/TicketScreen';
 import UserFeed from './src/screens/UserFeed';
 import WalletScreen from './src/screens/WalletScreen';
 import WrappedScreen from './src/screens/WrappedScreen';
+
+const AppearanceScreen = lazy(() => import('./src/screens/AppearanceScreen'));
+const LocationHeatmapScreen = lazy(() => import('./src/screens/LocationHeatmapScreen'));
+const ReportBugScreen = lazy(() => import('./src/screens/ReportBugScreen'));
 
 const LazyScreenFallback = ({ color }) => (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -179,7 +181,7 @@ function TabNavigator() {
 }
 
 const linking = {
-    prefixes: ['https://unievent-ez2w.onrender.com', 'unievent://', 'http://localhost:19006'],
+    prefixes: [BASE_URL, 'unievent://', 'http://localhost:19006'],
     config: {
         screens: {
             Main: {
